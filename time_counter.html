@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Time Counter</title>
+    <script type="text/javascript">
+        // Function to update the time counter
+        function updateTime() {
+            // Get the current time
+            var currentTime = new Date();
+
+            // Format the time
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            var seconds = currentTime.getSeconds();
+
+            // Pad single digit minutes and seconds with leading zeros
+            minutes = (minutes < 10 ? "0" : "") + minutes;
+            seconds = (seconds < 10 ? "0" : "") + seconds;
+
+            // Choose between "AM" and "PM"
+            var suffix = (hours < 12) ? "AM" : "PM";
+
+            // Convert hours from military time
+            hours = (hours < 12) ? hours : hours - 12;
+
+            // Convert 0 to 12
+            hours = (hours == 0) ? 12 : hours;
+
+            // Build the time string
+            var timeString = hours + ":" + minutes + ":" + seconds + " " + suffix;
+
+            // Update the time display
+            document.getElementById("time").innerHTML = timeString;
+        }
+
+        // Update the time every second
+        setInterval(updateTime, 1000);
+    </script>
+</head>
+<body>
+    <h1>Time Counter</h1>
+    <div id="time"></div>
+</body>
+</html>
